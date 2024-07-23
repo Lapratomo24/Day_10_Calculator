@@ -26,23 +26,27 @@ operations = {
     "/": divide
 }
 
-num1 = int(input("What is your first number? "))
+def calculator():
+    num1 = float(input("What is your first number? "))
 
-for op in operations:
-    print(op, end=" ")
-    
-end_calculation = False
+    for op in operations:
+        print(op, end=" ")
+        
+    end_calculation = False
 
-while not end_calculation:
-    selection = input(" <-- Pick a mathematical operation: ")
-    num2 = int(input("What is your other number? "))
+    while not end_calculation:
+        selection = input(" <-- Pick a mathematical operation: ")
+        num2 = float(input("What is your other number? "))
 
-    math_operation = operations[selection]
-    result = math_operation(num1, num2)
-    print(f"{num1} {selection} {num2} = {result}")
-    
-    new_calc = input(f"Type 'y' to continue calculating with {result}, or 'n' to stop: ")
-    if new_calc == 'n':
-        end_calculation = True
-    elif new_calc == 'y':
-        num1 = result
+        math_operation = operations[selection]
+        result = math_operation(num1, num2)
+        print(f"{num1} {selection} {num2} = {result}")
+        
+        new_calc = input(f"Type 'y' to continue calculating with {result}, or 'n' to start a new calculation: ")
+        if new_calc == 'n':
+            end_calculation = True
+        elif new_calc == 'y':
+            num1 = result
+            calculator()
+
+calculator()
